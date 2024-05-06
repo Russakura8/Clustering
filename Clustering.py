@@ -27,10 +27,10 @@ dbscan = cluster.DBSCAN(min_samples=3, eps=2.16).fit(data)
 spectral = cluster.SpectralClustering(n_clusters=6).fit(data)
 kmeans = cluster.KMeans(n_clusters=6).fit(data)
 gmm = mixture.GaussianMixture(n_components = 6).fit(data)
-birch = cluster.Birch().fit(data)
+agglomerative = cluster.AgglomerativeClustering(n_clusters=6).fit(data)
 
 
-methods = ["dbscan", "spectral", "kmeans", "gmm", "birch"]
+methods = ["dbscan", "spectral", "kmeans", "gmm", "agglomerative"]
 
 pca = PCA(n_components=2)
 pca.fit(data)
@@ -49,8 +49,10 @@ for method in methods:
 
     wb = Workbook()
 
-
-    for i in range(max(labels) + 1):
+    k = 0
+    if method == "dbscan":
+        k = -1
+    for i in range(k, max(labels) + 1):
         ws = wb.create_sheet(str(i))
         count = 1
         for key in students[0]:
