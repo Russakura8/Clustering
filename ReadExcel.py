@@ -1,7 +1,5 @@
 import openpyxl
-from sklearn import cluster, mixture
-import numpy as np
-import matplotlib.pyplot as plt
+
 
 
 class ReadExcel:
@@ -28,7 +26,8 @@ class ReadExcel:
                   'Укажите свои ФИО (по желанию)',
                                '25. Ваши пожелания по повышению качества питания в столовых и буфетах ТвГУ?',
                                '22. Опишите Ваше питание в ТвГУ',
-                               '18. Если обращались, вы удовлетворены оказанной Вам помощью?']
+                               '18. Если обращались, вы удовлетворены оказанной Вам помощью?',
+                               '30. Какими услугами в Центре содействия трудоустройству молодежи ТвГУ или Молодежной бирже труда ТвГУ Вы уже воспользовались? (можно указать несколько вариантов)']
 
 
     def read(self):
@@ -118,34 +117,7 @@ class ReadExcel:
 
 
 cl = ReadExcel()
-
-print(cl.read()[0])
+cl.read()
 cl.convertTextToNumbers()
 cl.do_mas()
-"""
-#print(cl.mas_of_norm_data)
-data = np.array(cl.mas_of_norm_data)
-#new_data = np.array([data[:, 2], data[:, 4]])
-#new_data = new_data.T
-
-clustering = KMeans(n_clusters=14).fit(data)
-labels = clustering.labels_
-
-#clustering = cluster.DBSCAN(eps=1).fit(data)
-clustering = cluster.DBSCAN(min_samples=3, eps=2.05).fit(data)
-
-labels = clustering.labels_
-
-np.set_printoptions(threshold=np.inf)
-print(labels)
-print(max(labels))
-print(np.count_nonzero(labels == -1))
-
-plt.scatter(data[:, 2], data[:, 4], c=labels, s=50, cmap='viridis')
-#centers = clustering.cluster_centers_
-#plt.scatter(centers[:, 2], centers[:, 3], c='red', s=200, alpha=0.5)
-plt.show()
-
-
-"""
 

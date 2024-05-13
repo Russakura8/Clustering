@@ -24,10 +24,10 @@ np.set_printoptions(threshold=np.inf)
 
 
 dbscan = cluster.DBSCAN(min_samples=3, eps=2.16).fit(data)
-spectral = cluster.SpectralClustering(n_clusters=6).fit(data)
-kmeans = cluster.KMeans(n_clusters=6).fit(data)
-gmm = mixture.GaussianMixture(n_components = 6).fit(data)
-agglomerative = cluster.AgglomerativeClustering(n_clusters=6).fit(data)
+spectral = cluster.SpectralClustering(n_clusters=5).fit(data)
+kmeans = cluster.KMeans(n_clusters=5).fit(data)
+gmm = mixture.GaussianMixture(n_components =5).fit(data)
+agglomerative = cluster.AgglomerativeClustering(n_clusters=5).fit(data)
 
 
 methods = ["dbscan", "spectral", "kmeans", "gmm", "agglomerative"]
