@@ -29,7 +29,7 @@ def create_txt(method):
                         tmp[cell.value] += 1
 
         with open(f"{method}.txt", 'a') as f:
-            f.write(str(i))
+            f.write(str(i) + " — номер кластера")
             f.write("\n")
             for key, value in res.items():
                 f.write(key)
